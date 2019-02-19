@@ -10,11 +10,11 @@
 #define LCGS(code) LCTL(LGUI(LSFT(code)))
 #define LCS(code) LCTL(LSFT(code))
 
-#define __BASE 0 // default layer
-#define __TEST 1 // testing layer for new keymaps
-#define __SYMB 2 // symbols
-#define __ARRO 3 // arrows
-#define __MDIA 4 // mouse & media keys
+#define __BASE 0 // L0 - default layer
+#define __TEST 1 // L1 - testing layer for new keymaps
+#define __SYMB 2 // L2 - symbols
+#define __ARRO 3 // L3 - arrows
+#define __MDIA 4 // L4 - mouse & media keys
 
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE,    // can always be here
@@ -309,7 +309,7 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][4] = {
         // Left hand
         LED_______OFF_______, LED_______OFF_______, LED_______OFF_______, LED_______OFF_______, LED_______OFF_______,
         LED_______OFF_______, LED_______OFF_______, LED_______OFF_______, LED_______OFF_______, LED_______OFF_______,
-        LED_______OFF_______, LED_______OFF_______, LED_______OFF_______, LED_______OFF_______, LED_______OFF_______,
+        LED_______OFF_______, LED__Sunset_DarkRed_, LED__Sunset_DarkRed_, LED__Sunset_DarkRed_, LED_______OFF_______,
         LED_______OFF_______, LED_______OFF_______, LED_______OFF_______, LED_______OFF_______, LED_______OFF_______,
         LED_______OFF_______, LED_______OFF_______, LED_______OFF_______, LED_______OFF_______,
 
