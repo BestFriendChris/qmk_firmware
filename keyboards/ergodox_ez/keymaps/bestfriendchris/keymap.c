@@ -23,7 +23,7 @@ enum custom_keycodes {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-/* Keymap 0: Basic layer
+/* Keymap L0: Basic layer
  *
  * ,---------------------------------------------------.           ,---------------------------------------------------.
  * |   `    |   1  |   2  |   3  |   4  |   5  |  ~L1  |           |       |   6  |   7  |   8  |   9  |   0  |   -    |
@@ -65,18 +65,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_PGDN,      KC_TAB,       KC_ENT
     ),
 
-/* Keymap 1: Testing Layer - Completely overwrites Base
+/* Keymap L1: Testing Layer - Completely overwrites Base
  *
  * ,---------------------------------------------------.           ,---------------------------------------------------.
  * |   `    |   1  |   2  |   3  |   4  |   5  | _____ |           |       |   6  |   7  |   8  |   9  |   0  |   -    |
  * |--------+------+------+------+------+--------------|           |-------+------+------+------+------+------+--------|
- * | Tab    |   Q  |   W  | E/L2 |   R  |   T  |   [   |           |   ]   |   Y  |   U  | I/L2 |   O  |   P  |   =    |
+ * | Tab    |   Q  |   W  | E/L2 | R/L3 |   T  |   [   |           |   ]   |   Y  |   U  | I/L2 |   O  |   P  |   =    |
  * |--------+------+------+------+------+------|       |           |       |------+------+------+------+------+--------|
  * | Ctrl   |   A  |S/Ctrl| D/Alt| F/Cmd|   G  |-------|           |-------|   H  | J/Cmd| K/Alt|L/Ctrl| ;/L4 |   '    |
  * |--------+------+------+------+------+------|   <   |           |   >   |------+------+------+------+------+--------|
  * | Shft-( |   Z  |   X  |   C  |   V  |   B  |       |           |       |   N  |   M  |   ,  |   .  |  /   | Shft-) |
  * `--------+------+------+------+------+--------------'           `--------------+------+------+------+------+--------'
- *   |Esc/L2|      |      |      | ~L3  |                                         |  Up  | Down |   [  |   ]  | ~L2  |
+ *   |Esc/L2| ~L3  |      |      |Shft-(|                                         |Shft-)|  _   |   [  | ]/L3 | ~L2  |
  *   `----------------------------------'                                         `----------------------------------'
  *                                        ,-------------.         ,-------------.
  *                                        |      |      |         |      |  ~L3 |
@@ -89,35 +89,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [__TEST] = LAYOUT_ergodox(
     // left hand
     KC_GRV,            KC_1,         KC_2,         KC_3,            KC_4,              KC_5,         _______,
-    KC_TAB,            KC_Q,         KC_W,         LT(__SYMB,KC_E), KC_R,              KC_T,         KC_LBRC,
+    KC_TAB,            KC_Q,         KC_W,         LT(__SYMB,KC_E), LT(__ARRO, KC_R),  KC_T,         KC_LBRC,
     KC_LCTL,           KC_A,         LCTL_T(KC_S), LALT_T(KC_D),    LCMD_T(KC_F),      KC_G,
     KC_LSPO,           KC_Z,         KC_X,         KC_C,            KC_V,              KC_B,         KC_LABK,
-    LT(__SYMB,KC_ESC), XXXXXXX,      XXXXXXX,      XXXXXXX,         TT(__ARRO),
+    LT(__SYMB,KC_ESC), TT(__ARRO),   XXXXXXX,      XXXXXXX,         KC_LSPO,
                                                                           XXXXXXX,      XXXXXXX,
                                                                                         KC_HOME,
                                                             KC_SPC,       KC_BSPC,      KC_END,
         // right hand
-        XXXXXXX,      KC_6,         KC_7,         KC_8,            KC_9,         KC_0,              KC_MINS,
-        KC_RBRC,      KC_Y,         KC_U,         LT(__SYMB,KC_I), KC_O,         KC_P,              KC_EQL,
-                      KC_H,         RCMD_T(KC_J), RALT_T(KC_K),    RCTL_T(KC_L), LT(__MDIA,KC_SCLN),KC_QUOT,
-        KC_RABK,      KC_N,         KC_M,         KC_COMM,         KC_DOT,       KC_SLSH,           KC_RSPC,
-                                    KC_UP,        KC_DOWN,         KC_LBRC,      KC_RBRC,           TT(__SYMB),
+        XXXXXXX,      KC_6,         KC_7,         KC_8,            KC_9,         KC_0,                KC_MINS,
+        KC_RBRC,      KC_Y,         KC_U,         LT(__SYMB,KC_I), KC_O,         KC_P,                KC_EQL,
+                      KC_H,         RCMD_T(KC_J), RALT_T(KC_K),    RCTL_T(KC_L), LT(__MDIA,KC_SCLN),  KC_QUOT,
+        KC_RABK,      KC_N,         KC_M,         KC_COMM,         KC_DOT,       KC_SLSH,             KC_RSPC,
+                                    KC_RSPC,      KC_UNDS,         KC_LBRC,      LT(__ARRO, KC_RBRC), TT(__SYMB),
         XXXXXXX,      TT(__ARRO),
         KC_PGUP,
         KC_PGDN,      KC_TAB,       KC_ENT
     ),
-/* Keymap 2: Symbol Layer
+/* Keymap L2: Symbol Layer
  *
  * ,---------------------------------------------------.           ,---------------------------------------------------.
  * |  Esc   |      |      |      |      |      |       |           |       |      |      |   -  |   =  |  /   |        |
  * |--------+------+------+------+------+--------------|           |-------+------+------+------+------+------+--------|
  * | ______ |   !  |   #  |   {  |   }  |   |  |       |           |       |      |   7  |   8  |   9  |  *   |        |
  * |--------+------+------+------+------+------|       |           |       |------+------+------+------+------+--------|
- * | ______ |   @  |   $  |   <  |   >  |   `  |-------|           |-------|   \  | 4/Cmd| 5/Alt|6/Ctrl|  -   | Enter  |
+ * | ______ |   @  |\/Ctrl| [/Alt| ]/Cmd|   `  |-------|           |-------|   $  | 4/Cmd| 5/Alt|6/Ctrl|  -   | Enter  |
  * |--------+------+------+------+------+------|       |           |       |------+------+------+------+------+--------|
- * | ______ |   %  |   ^  |   [  |   ]  |   ~  |       |           |       |   &  |   1  |   2  |   3  |  +   | ______ |
+ * | ______ |   %  |   ^  |   <  |   >  |   ~  |       |           |       |   &  |   1  |   2  |   3  |  +   | ______ |
  * `--------+------+------+------+------+--------------'           `--------------+------+------+------+------+--------'
- *   | ____ |      | Ctrl |  Alt | LCmd |                                         |   0  |   .  |      |      | ____ |
+ *   | ____ |      |      |   (  |   )  |                                         |   0  |   .  |      |      | ____ |
  *   `----------------------------------'                                         `----------------------------------'
  *                                        ,-------------.         ,-------------.
  *                                        |Animat|      |         |Toggle|Solid |
@@ -130,18 +130,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [__SYMB] = LAYOUT_ergodox(
     // left hand
-    KC_ESC,       XXXXXXX,      XXXXXXX,        XXXXXXX,         XXXXXXX,         XXXXXXX,      XXXXXXX,
-    _______,      KC_EXLM,      KC_HASH,        KC_LCBR,         KC_RCBR,         KC_PIPE,      XXXXXXX,
-    _______,      KC_AT,        KC_DLR,         KC_LABK,         KC_RABK,         KC_GRV,
-    _______,      KC_PERC,      KC_CIRC,        KC_LBRC,         KC_RBRC,         KC_TILD,      XXXXXXX,
-    _______,      XXXXXXX,      KC_LCTRL,       KC_LALT,         KC_LCMD,
+    KC_ESC,       XXXXXXX,      XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,      XXXXXXX,
+    _______,      KC_EXLM,      KC_HASH,         KC_LCBR,         KC_RCBR,         KC_PIPE,      XXXXXXX,
+    _______,      KC_AT,        LCTL_T(KC_BSLS), LALT_T(KC_LBRC), LCMD_T(KC_RBRC), KC_GRV,
+    _______,      KC_PERC,      KC_CIRC,         KC_LABK,         KC_RABK,         KC_TILD,      XXXXXXX,
+    _______,      XXXXXXX,      XXXXXXX,         KC_LPRN,         KC_RPRN,
                                                                           RGB_MOD,      XXXXXXX,
                                                                                         RGB_VAI,
                                                             _______,      _______,      RGB_VAD,
         // right hand
         XXXXXXX,      XXXXXXX,      XXXXXXX,      KC_MINS,      KC_EQL,       KC_PSLS,      XXXXXXX,
         XXXXXXX,      XXXXXXX,      KC_7,         KC_8,         KC_9,         KC_PAST,      XXXXXXX,
-                      KC_BSLS,      RCMD_T(KC_4), RALT_T(KC_5), RCTL_T(KC_6), KC_PMNS,      KC_PENT,
+                      KC_DLR,       RCMD_T(KC_4), RALT_T(KC_5), RCTL_T(KC_6), KC_PMNS,      KC_PENT,
         XXXXXXX,      KC_AMPR,      KC_1,         KC_2,         KC_3,         KC_PPLS,      _______,
                                     KC_P0,        KC_DOT,       XXXXXXX,      XXXXXXX,      _______,
         RGB_TOG,      RGB_SLD,
@@ -149,7 +149,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         RGB_HUD,      _______,      _______
     ),
 
-/* Keymap 3: Arrow
+/* Keymap L3: Arrow
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
@@ -191,7 +191,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,      _______,      _______
     ),
 
-/* Keymap 4: Media and mouse keys
+/* Keymap L4: Media and mouse keys
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
@@ -289,13 +289,14 @@ rgb_config_t rgb_matrix_config;
 #define LED__Sunset_LiteRed_ {233,218,217}
 
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][4] = {
+    // LED L2: Symbol Layer
     [__SYMB] = LED_ergodox(
         // Left hand
         LED_______OFF_______, LED_______OFF_______, LED_______OFF_______, LED_______OFF_______, LED_______OFF_______,
         LED__Sunset_Purple__, LED__Sunset_Purple__, LED__Sunset_LiteRed_, LED__Sunset_LiteRed_, LED__Sunset_Purple__,
         LED__Sunset_Purple__, LED__Sunset_Purple__, LED__Sunset_LiteRed_, LED__Sunset_LiteRed_, LED__Sunset_Purple__,
         LED__Sunset_Purple__, LED__Sunset_Purple__, LED__Sunset_LiteRed_, LED__Sunset_LiteRed_, LED__Sunset_Purple__,
-        LED_______OFF_______, LED_______OFF_______, LED_______OFF_______, LED_______OFF_______,
+        LED_______OFF_______, LED_______OFF_______, LED__Sunset_LiteRed_, LED__Sunset_LiteRed_,
 
         // Right hand
         LED_______OFF_______, LED_______OFF_______, LED__Sunset_Blue____, LED__Sunset_Blue____, LED__Sunset_Blue____,
@@ -305,6 +306,7 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][4] = {
                               LED__Sunset_DarkRed_, LED__Sunset_Blue____, LED_______OFF_______, LED_______OFF_______
     ),
 
+    // LED L3: Arrow
     [__ARRO] = LED_ergodox(
         // Left hand
         LED_______OFF_______, LED_______OFF_______, LED_______OFF_______, LED_______OFF_______, LED_______OFF_______,
@@ -321,6 +323,7 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][4] = {
                               LED__Sunset_Orange__, LED__Sunset_Orange__, LED__Sunset_Orange__, LED_______OFF_______
     ),
 
+    // LED L4: Media and mouse keys
     [__MDIA] = LED_ergodox(
         // Left hand
         LED_______OFF_______, LED_______OFF_______, LED_______OFF_______, LED_______OFF_______, LED_______OFF_______,
