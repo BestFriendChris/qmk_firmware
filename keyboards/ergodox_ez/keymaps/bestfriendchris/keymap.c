@@ -15,6 +15,7 @@
 #define __SYMB 2 // L2 - symbols
 #define __ARRO 3 // L3 - arrows
 #define __MDIA 4 // L4 - mouse & media keys
+#define __RGBT 5 // L5 - RGB testing layer
 
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE,    // can always be here
@@ -26,7 +27,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap L0: Basic Layer
  *
  * ,---------------------------------------------------.           ,---------------------------------------------------.
- * |   `    |   1  |   2  |   3  |   4  |   5  |  ~L1  |           |       |   6  |   7  |   8  |   9  |   0  |   -    |
+ * |   `    |   1  |   2  |   3  |   4  |   5  |  ~L1  |           |  ~L5  |   6  |   7  |   8  |   9  |   0  |   -    |
  * |--------+------+------+------+------+--------------|           |-------+------+------+------+------+------+--------|
  * | Tab    |   Q  |   W  | E/L2 | R/L3 |   T  |   [   |           |   ]   |   Y  |   U  | I/L2 |   O  |   P  |   =    |
  * |--------+------+------+------+------+------|       |           |       |------+------+------+------+------+--------|
@@ -37,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *   |Esc/L2| ~L3  |      |      |Shft-(|                                         |Shft-)|  _   |   [  | ]/L3 | ~L2  |
  *   `----------------------------------'                                         `----------------------------------'
  *                                        ,-------------.         ,-------------.
- *                                        |      |      |         |      |  ~L3 |
+ *                                        | Mod+ | Mod- |         | Hue- | Hue+ |
  *                                 ,------|------|------|         |------+------+------.
  *                                 |      |      | Home |         | PgUp |      |      |
  *                                 | Space|Backsp|------|         |------| Tab  |Enter |
@@ -46,21 +47,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [__BASE] = LAYOUT_ergodox(
     // left hand
-    KC_GRV,            KC_1,         KC_2,         KC_3,            KC_4,              KC_5,         _______,
+    KC_GRV,            KC_1,         KC_2,         KC_3,            KC_4,              KC_5,         TG(__TEST),
     KC_TAB,            KC_Q,         KC_W,         LT(__SYMB,KC_E), LT(__ARRO, KC_R),  KC_T,         KC_LBRC,
     KC_LCTL,           KC_A,         LCTL_T(KC_S), LALT_T(KC_D),    LCMD_T(KC_F),      KC_G,
     KC_LSPO,           KC_Z,         KC_X,         KC_C,            KC_V,              KC_B,         KC_LABK,
     LT(__SYMB,KC_ESC), TT(__ARRO),   XXXXXXX,      XXXXXXX,         KC_LSPO,
-                                                                          XXXXXXX,      XXXXXXX,
+                                                                          RGB_MOD,      RGB_RMOD,
                                                                                         KC_HOME,
                                                             KC_SPC,       KC_BSPC,      KC_END,
         // right hand
-        XXXXXXX,      KC_6,         KC_7,         KC_8,            KC_9,         KC_0,                KC_MINS,
+        TG(__RGBT),   KC_6,         KC_7,         KC_8,            KC_9,         KC_0,                KC_MINS,
         KC_RBRC,      KC_Y,         KC_U,         LT(__SYMB,KC_I), KC_O,         KC_P,                KC_EQL,
                       KC_H,         RCMD_T(KC_J), RALT_T(KC_K),    RCTL_T(KC_L), LT(__MDIA,KC_SCLN),  KC_QUOT,
         KC_RABK,      KC_N,         KC_M,         KC_COMM,         KC_DOT,       KC_SLSH,             KC_RSPC,
                                     KC_RSPC,      KC_UNDS,         KC_LBRC,      LT(__ARRO, KC_RBRC), TT(__SYMB),
-        XXXXXXX,      TT(__ARRO),
+        RGB_HUD,      RGB_HUI,
         KC_PGUP,
         KC_PGDN,      KC_TAB,       KC_ENT
     ),
@@ -233,6 +234,49 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,      XXXXXXX,      KC_MUTE
     ),
 
+/* Keymap L5: RGB Testing Layer
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |        |      |      |      |      |      | Reset|           | ____ |      |      |      |      |      |        |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |        |      |      |      |      |      | MOD+ |           | HUE+ |      |      |      |      |      |        |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |------|           |------|      |      |      |      |      |        |
+ * |--------+------+------+------+------+------| MOD- |           | HUE- |------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |      |      |      |      |      |                                       | SPD+ | SPD- |      |      |      |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      | SAT+ |       | VAL+ |      |      |
+ *                                 |      |      |------|       |------|      |      |
+ *                                 |      |      | SAT- |       | VAL- |      |      |
+ *                                 `--------------------'       `--------------------'
+ *
+ */
+  [__RGBT] = LAYOUT_ergodox(
+    // left hand
+    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      RGB_M_P,
+    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      RGB_MOD,
+    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      RGB_RMOD,
+    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+                                                                          XXXXXXX,      XXXXXXX,
+                                                                                        RGB_SAI,
+                                                            XXXXXXX,      XXXXXXX,      RGB_SAD,
+        // right hand
+        _______,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+        RGB_HUI,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+                      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+        RGB_HUD,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+                                    RGB_SPI,      RGB_SPD,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+        XXXXXXX,      XXXXXXX,
+        RGB_VAI,
+        RGB_VAD,      XXXXXXX,      XXXXXXX
+    ),
+
 
 };
 
@@ -361,6 +405,7 @@ void rgb_matrix_indicators_user(void) {
     uint8_t layer = biton32(layer_state);
     switch (layer) {
       case __BASE:
+      case __RGBT:
         rgb_matrix_config.raw = eeprom_read_dword(EECONFIG_RGB_MATRIX);
         rgb_matrix_mode_noeeprom(rgb_matrix_config.mode);
         if(rgb_matrix_config.mode != 1) {
