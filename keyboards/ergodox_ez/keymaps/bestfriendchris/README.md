@@ -4,7 +4,7 @@
 
 ### 0 - Base
 
-QWERTY layout that pretty closely mimics my MacBook Pro keyboard layout.
+Default layout
 
 ![Base Layer](layer_images/0-base-layer.png)
 
