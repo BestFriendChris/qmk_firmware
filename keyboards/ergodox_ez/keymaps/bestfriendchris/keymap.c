@@ -111,9 +111,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,---------------------------------------------------.           ,---------------------------------------------------.
  * |  Esc   |      |      |      |      |      |       |           |       |      |      |   -  |   =  |  /   |        |
  * |--------+------+------+------+------+--------------|           |-------+------+------+------+------+------+--------|
- * | ______ |   !  |   #  |   {  |   }  |   |  |       |           |       |      |   7  |   8  |   9  |  *   |        |
+ * | ______ |   !  |   #  |   {  |   }  |   |  |       |           |       |   $  |   7  |   8  |   9  |  *   |        |
  * |--------+------+------+------+------+------|       |           |       |------+------+------+------+------+--------|
- * | ______ |   @  |\/Ctrl| [/Alt| ]/Cmd|   `  |-------|           |-------|   $  | 4/Cmd| 5/Alt|6/Ctrl|  -   | Enter  |
+ * | ______ |   @  |\/Ctrl| [/Alt| ]/Cmd|   `  |-------|           |-------|   -  | 4/Cmd| 5/Alt|6/Ctrl|  -   | Enter  |
  * |--------+------+------+------+------+------|       |           |       |------+------+------+------+------+--------|
  * | ______ |   %  |   ^  |   <  |   >  |   ~  |       |           |       |   &  |   1  |   2  |   3  |  +   | ______ |
  * `--------+------+------+------+------+--------------'           `--------------+------+------+------+------+--------'
@@ -140,8 +140,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                             _______,      _______,      RGB_VAD,
         // right hand
         XXXXXXX,      XXXXXXX,      XXXXXXX,      KC_MINS,      KC_EQL,       KC_PSLS,      XXXXXXX,
-        XXXXXXX,      XXXXXXX,      KC_7,         KC_8,         KC_9,         KC_PAST,      XXXXXXX,
-                      KC_DLR,       RCMD_T(KC_4), RALT_T(KC_5), RCTL_T(KC_6), KC_PMNS,      KC_PENT,
+        XXXXXXX,      KC_DLR,       KC_7,         KC_8,         KC_9,         KC_PAST,      XXXXXXX,
+                      KC_MINS,      RCMD_T(KC_4), RALT_T(KC_5), RCTL_T(KC_6), KC_PMNS,      KC_PENT,
         XXXXXXX,      KC_AMPR,      KC_1,         KC_2,         KC_3,         KC_PPLS,      _______,
                                     KC_P0,        KC_DOT,       XXXXXXX,      XXXXXXX,      _______,
         RGB_TOG,      RGB_SLD,
@@ -300,7 +300,7 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][4] = {
 
         // Right hand
         LED_______OFF_______, LED_______OFF_______, LED__Sunset_Blue____, LED__Sunset_Blue____, LED__Sunset_Blue____,
-        LED_______OFF_______, LED__Sunset_DarkRed_, LED__Sunset_DarkRed_, LED__Sunset_DarkRed_, LED__Sunset_Blue____,
+        LED__Sunset_Purple__, LED__Sunset_DarkRed_, LED__Sunset_DarkRed_, LED__Sunset_DarkRed_, LED__Sunset_Blue____,
         LED__Sunset_Purple__, LED__Sunset_DarkRed_, LED__Sunset_DarkRed_, LED__Sunset_DarkRed_, LED__Sunset_Blue____,
         LED__Sunset_Purple__, LED__Sunset_DarkRed_, LED__Sunset_DarkRed_, LED__Sunset_DarkRed_, LED__Sunset_Blue____,
                               LED__Sunset_DarkRed_, LED__Sunset_Blue____, LED_______OFF_______, LED_______OFF_______
