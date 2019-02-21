@@ -23,18 +23,18 @@ enum custom_keycodes {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-/* Keymap L0: Basic layer
+/* Keymap L0: Basic Layer
  *
  * ,---------------------------------------------------.           ,---------------------------------------------------.
  * |   `    |   1  |   2  |   3  |   4  |   5  |  ~L1  |           |       |   6  |   7  |   8  |   9  |   0  |   -    |
  * |--------+------+------+------+------+--------------|           |-------+------+------+------+------+------+--------|
  * | Tab    |   Q  |   W  | E/L2 | R/L3 |   T  |   [   |           |   ]   |   Y  |   U  | I/L2 |   O  |   P  |   =    |
  * |--------+------+------+------+------+------|       |           |       |------+------+------+------+------+--------|
- * | Ctrl   |   A  |   S  |   D  |   F  |   G  |-------|           |-------|   H  |   J  |   K  |   L  | ;/L4 |   '    |
+ * | Ctrl   |   A  |S/Ctrl| D/Alt| F/Cmd|   G  |-------|           |-------|   H  | J/Cmd| K/Alt|L/Ctrl| ;/L4 |   '    |
  * |--------+------+------+------+------+------|   <   |           |   >   |------+------+------+------+------+--------|
  * | Shft-( |   Z  |   X  |   C  |   V  |   B  |       |           |       |   N  |   M  |   ,  |   .  |  /   | Shft-) |
  * `--------+------+------+------+------+--------------'           `--------------+------+------+------+------+--------'
- *   |Esc/L2|      | Ctrl |  Alt | LGui |                                         |  Up  | Down |   [  |   ]  | ~L2  |
+ *   |Esc/L2| ~L3  |      |      |Shft-(|                                         |Shft-)|  _   |   [  | ]/L3 | ~L2  |
  *   `----------------------------------'                                         `----------------------------------'
  *                                        ,-------------.         ,-------------.
  *                                        |      |      |         |      |  ~L3 |
@@ -46,20 +46,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [__BASE] = LAYOUT_ergodox(
     // left hand
-    KC_GRV,            KC_1,         KC_2,         KC_3,            KC_4,              KC_5,         TG(__TEST),
-    KC_TAB,            KC_Q,         KC_W,         LT(__SYMB,KC_E), LT(__ARRO,KC_R),   KC_T,         KC_LBRC,
-    KC_LCTL,           KC_A,         KC_S,         KC_D,            KC_F,              KC_G,
+    KC_GRV,            KC_1,         KC_2,         KC_3,            KC_4,              KC_5,         _______,
+    KC_TAB,            KC_Q,         KC_W,         LT(__SYMB,KC_E), LT(__ARRO, KC_R),  KC_T,         KC_LBRC,
+    KC_LCTL,           KC_A,         LCTL_T(KC_S), LALT_T(KC_D),    LCMD_T(KC_F),      KC_G,
     KC_LSPO,           KC_Z,         KC_X,         KC_C,            KC_V,              KC_B,         KC_LABK,
-    LT(__SYMB,KC_ESC), XXXXXXX,      KC_LCTL,      KC_LALT,         KC_LCMD,
+    LT(__SYMB,KC_ESC), TT(__ARRO),   XXXXXXX,      XXXXXXX,         KC_LSPO,
                                                                           XXXXXXX,      XXXXXXX,
                                                                                         KC_HOME,
                                                             KC_SPC,       KC_BSPC,      KC_END,
         // right hand
-        XXXXXXX,      KC_6,         KC_7,         KC_8,            KC_9,         KC_0,              KC_MINS,
-        KC_RBRC,      KC_Y,         KC_U,         LT(__SYMB,KC_I), KC_O,         KC_P,              KC_EQL,
-                      KC_H,         KC_J,         KC_K,            KC_L,         LT(__MDIA,KC_SCLN),KC_QUOT,
-        KC_RABK,      KC_N,         KC_M,         KC_COMM,         KC_DOT,       KC_SLSH,           KC_RSPC,
-                                    KC_UP,        KC_DOWN,         KC_LBRC,      KC_RBRC,           TT(__SYMB),
+        XXXXXXX,      KC_6,         KC_7,         KC_8,            KC_9,         KC_0,                KC_MINS,
+        KC_RBRC,      KC_Y,         KC_U,         LT(__SYMB,KC_I), KC_O,         KC_P,                KC_EQL,
+                      KC_H,         RCMD_T(KC_J), RALT_T(KC_K),    RCTL_T(KC_L), LT(__MDIA,KC_SCLN),  KC_QUOT,
+        KC_RABK,      KC_N,         KC_M,         KC_COMM,         KC_DOT,       KC_SLSH,             KC_RSPC,
+                                    KC_RSPC,      KC_UNDS,         KC_LBRC,      LT(__ARRO, KC_RBRC), TT(__SYMB),
         XXXXXXX,      TT(__ARRO),
         KC_PGUP,
         KC_PGDN,      KC_TAB,       KC_ENT
