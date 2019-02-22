@@ -15,19 +15,22 @@
 #define __SYMB 2 // L2 - symbols
 #define __ARRO 3 // L3 - arrows
 #define __MDIA 4 // L4 - mouse & media keys
-#define __RGBT 5 // L5 - RGB testing layer
+#define __STNO 5 // L5 - Steno keyboard for Plover
+#define __RGBT 6 // L6 - RGB testing layer
 
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE,    // can always be here
   EPRM,
   RGB_SLD,
+  STNO_START,
+  STNO_END,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap L0: Basic Layer
  *
  * ,---------------------------------------------------.           ,---------------------------------------------------.
- * |   `    |   1  |   2  |   3  |   4  |   5  |  ~L1  |           |  ~L5  |   6  |   7  |   8  |   9  |   0  |   -    |
+ * |   `    |   1  |   2  |   3  |   4  |   5  |  ~L1  |           |  ~L6  |   6  |   7  |   8  |   9  |   0  |   -    |
  * |--------+------+------+------+------+--------------|           |-------+------+------+------+------+------+--------|
  * | Tab    |   Q  |   W  | E/L2 | R/L3 |   T  |   [   |           |   ]   |   Y  |   U  | I/L2 |   O  |   P  |   =    |
  * |--------+------+------+------+------+------|       |           |       |------+------+------+------+------+--------|
@@ -80,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *   |Esc/L2| ~L3  |      |      |Shft-(|                                         |Shft-)|  _   |   [  | ]/L3 | ~L2  |
  *   `----------------------------------'                                         `----------------------------------'
  *                                        ,-------------.         ,-------------.
- *                                        |      |      |         |      |  ~L3 |
+ *                                        |      | ~L5  |         |      |  ~L3 |
  *                                 ,------|------|------|         |------+------+------.
  *                                 |      |      | Home |         | PgUp |      |      |
  *                                 | Space|Backsp|------|         |------| Tab  |Enter |
@@ -94,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LCTL,           KC_A,         LCTL_T(KC_S), LALT_T(KC_D),    LCMD_T(KC_F),      KC_G,
     KC_LSPO,           KC_Z,         KC_X,         KC_C,            KC_V,              KC_B,         KC_LABK,
     LT(__SYMB,KC_ESC), TT(__ARRO),   XXXXXXX,      XXXXXXX,         KC_LSPO,
-                                                                          XXXXXXX,      XXXXXXX,
+                                                                          XXXXXXX,      STNO_START,
                                                                                         KC_HOME,
                                                             KC_SPC,       KC_BSPC,      KC_END,
         // right hand
@@ -234,7 +237,54 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,      XXXXXXX,      KC_MUTE
     ),
 
-/* Keymap L5: RGB Testing Layer
+/* Keymap L5: Steno keyboard for Plover
+    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1,    KC_1   ,
+    XXXXXXX, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
+    XXXXXXX, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+    EXT_PLV, XXXXXXX, XXXXXXX, KC_C,    KC_V,    XXXXXXX, XXXXXXX, KC_N,    KC_M,    XXXXXXX, XXXXXXX, XXXXXXX
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |        |   1  |   1  |   1  |   1  |   1  |      |           |      |   1  |   1  |   1  |   1  |   1  |   1    |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |   Q  |   W  |   E  |   R  |   T  |------|           |------|   Y  |   U  |   I  |   O  |   P  |   [    |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |   A  |   S  |   D  |   F  |   G  |      |           |      |   H  |   J  |   K  |   L  |   ;  |   '    |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |      |      |      |   C  |   V  |                                       |   N  |   M  |      |      |      |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      | ____ |       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 |   C  |   V  |------|       |------|   N  |   M  |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 `--------------------'       `--------------------'
+ *
+ */
+  [__STNO] = LAYOUT_ergodox(
+    // left hand
+    XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+    XXXXXXX,      KC_1,         KC_1,         KC_1,         KC_1,         KC_1,         XXXXXXX,
+    XXXXXXX,      KC_Q,         KC_W,         KC_E,         KC_R,         KC_T,   
+    XXXXXXX,      KC_A,         KC_S,         KC_D,         KC_F,         KC_G,         XXXXXXX,
+    XXXXXXX,      XXXXXXX,      XXXXXXX,      KC_C,         KC_V,   
+                                                                          XXXXXXX,      STNO_END,
+                                                                                        XXXXXXX,
+                                                            KC_C,         KC_V,         XXXXXXX,
+        // right hand
+        XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+        XXXXXXX,      KC_1,         KC_1,         KC_1,         KC_1,         KC_1,         KC_1,
+                      KC_Y,         KC_U,         KC_I,         KC_O,         KC_P,         KC_LBRC,
+        XXXXXXX,      KC_H,         KC_J,         KC_K,         KC_L,         KC_SCLN,      KC_QUOT,
+                                    KC_N,         KC_M,         XXXXXXX,      XXXXXXX,      XXXXXXX,
+        XXXXXXX,      XXXXXXX,
+        XXXXXXX,
+        XXXXXXX,      KC_N,         KC_M
+    ),
+
+/* Keymap L6: RGB Testing Layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      | Reset|           | ____ |      |      |      |      |      |        |
@@ -384,6 +434,23 @@ const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][4] = {
                               LED__DesSun_Yellow__, LED__DesSun_Tan_____, LED__DesSun_Orange__, LED_______OFF_______
     ),
 
+    // LED L5: Steno keyboard for Plover
+    [__STNO] = LED_ergodox(
+        // Left hand
+        LED_______OFF_______, LED_______OFF_______, LED_______OFF_______, LED_______OFF_______, LED_______OFF_______,
+        LED__Mtrl___Yellow__, LED__Mtrl___Yellow__, LED__Mtrl___Yellow__, LED__Mtrl___Yellow__, LED__Mtrl___Yellow__,
+        LED__Sunset_Blue____, LED__Sunset_Orange__, LED__Sunset_LiteRed_, LED__Sunset_Orange__, LED__Mtrl___Green___,
+        LED__Sunset_Blue____, LED__Sunset_LiteRed_, LED__Sunset_Orange__, LED__Sunset_LiteRed_, LED__Mtrl___Green___,
+        LED_______OFF_______, LED_______OFF_______, LED__Sunset_Blue____, LED__Sunset_Purple__,
+
+        // Right hand
+        LED_______OFF_______, LED_______OFF_______, LED_______OFF_______, LED_______OFF_______, LED_______OFF_______,
+        LED__Mtrl___Yellow__, LED__Mtrl___Yellow__, LED__Mtrl___Yellow__, LED__Mtrl___Yellow__, LED__Mtrl___Yellow__,
+        LED__Mtrl___Green___, LED__Sunset_Orange__, LED__Sunset_LiteRed_, LED__Sunset_Orange__, LED__Sunset_LiteRed_,
+        LED__Mtrl___Green___, LED__Sunset_LiteRed_, LED__Sunset_Orange__, LED__Sunset_LiteRed_, LED__Sunset_Orange__,
+                              LED__Sunset_Blue____, LED__Sunset_Purple__, LED_______OFF_______, LED_______OFF_______
+    ),
+
 };
 
 void set_leds_color( int layer) {
@@ -427,6 +494,7 @@ void rgb_matrix_indicators_user(void) {
       case __SYMB:
       case __ARRO:
       case __MDIA:
+      case __STNO:
         set_leds_color(layer);
         break;
     }
@@ -449,6 +517,17 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
     return MACRO_NONE;
 };
 
+#define SS_HYPR(string) \
+  SS_DOWN(X_LGUI) \
+  SS_DOWN(X_LALT) \
+  SS_DOWN(X_LCTRL) \
+  SS_DOWN(X_LSHIFT) \
+  string \
+  SS_UP(X_LSHIFT) \
+  SS_UP(X_LCTRL) \
+  SS_UP(X_LALT) \
+  SS_UP(X_LGUI)
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     // dynamically generate these.
@@ -461,6 +540,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case RGB_SLD:
       if (record->event.pressed) {
         rgblight_mode(1);
+      }
+      return false;
+      break;
+    case STNO_START:
+      if (record->event.pressed) {
+        SEND_STRING(SS_HYPR("p"));
+        layer_on(__STNO);
+      }
+      return false;
+      break;
+    case STNO_END:
+      if (record->event.pressed) {
+        layer_off(__STNO);
+        SEND_STRING(SS_HYPR("p"));
       }
       return false;
       break;
@@ -484,6 +577,11 @@ uint32_t layer_state_set_user(uint32_t state) {
         ergodox_right_led_2_on();
         break;
       case __MDIA:
+        ergodox_right_led_3_on();
+        break;
+      case __RGBT:
+        ergodox_right_led_1_on();
+        ergodox_right_led_2_on();
         ergodox_right_led_3_on();
         break;
 /*
