@@ -32,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,---------------------------------------------------.           ,---------------------------------------------------.
  * |   `    |   1  |   2  |   3  |   4  |   5  |  ~L1  |           |  ~L6  |   6  |   7  |   8  |   9  |   0  |   -    |
  * |--------+------+------+------+------+--------------|           |-------+------+------+------+------+------+--------|
- * |        |   Q  |   W  | E/L2 | R/L3 |   T  |   [   |           |   ]   |   Y  |   U  | I/L2 |   O  |   P  |   =    |
+ * | Esc    |   Q  |   W  | E/L2 | R/L3 |   T  |   [   |           |   ]   |   Y  |   U  | I/L2 |   O  |   P  |   =    |
  * |--------+------+------+------+------+------|       |           |       |------+------+------+------+------+--------|
  * | Hyper  |   A  |S/Ctrl| D/Alt| F/Cmd|   G  |-------|           |-------|   H  | J/Cmd| K/Alt|L/Ctrl| ;/L4 |   '    |
  * |--------+------+------+------+------+------|   <   |           |   >   |------+------+------+------+------+--------|
@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [__BASE] = LAYOUT_ergodox(
     // left hand
     KC_GRV,            KC_1,         KC_2,         KC_3,            KC_4,              KC_5,         TG(__TEST),
-    XXXXXXX,           KC_Q,         KC_W,         LT(__SYMB,KC_E), LT(__ARRO, KC_R),  KC_T,         KC_LBRC,
+    KC_ESC,            KC_Q,         KC_W,         LT(__SYMB,KC_E), LT(__ARRO, KC_R),  KC_T,         KC_LBRC,
     KC_HYPR,           KC_A,         LCTL_T(KC_S), LALT_T(KC_D),    LCMD_T(KC_F),      KC_G,
     KC_MEH,            KC_Z,         KC_X,         KC_C,            KC_V,              KC_B,         KC_LABK,
     LT(__SYMB,KC_ESC), TT(__ARRO),   XXXXXXX,      KC_BSLS,         KC_LSPO,
