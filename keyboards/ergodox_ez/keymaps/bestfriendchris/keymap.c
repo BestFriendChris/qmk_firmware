@@ -32,11 +32,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,---------------------------------------------------.           ,---------------------------------------------------.
  * |   `    |   1  |   2  |   3  |   4  |   5  |  ~L1  |           |  ~L6  |   6  |   7  |   8  |   9  |   0  |   -    |
  * |--------+------+------+------+------+--------------|           |-------+------+------+------+------+------+--------|
- * | Tab    |   Q  |   W  | E/L2 | R/L3 |   T  |   [   |           |   ]   |   Y  |   U  | I/L2 |   O  |   P  |   =    |
+ * |        |   Q  |   W  | E/L2 | R/L3 |   T  |   [   |           |   ]   |   Y  |   U  | I/L2 |   O  |   P  |   =    |
  * |--------+------+------+------+------+------|       |           |       |------+------+------+------+------+--------|
- * | Ctrl   |   A  |S/Ctrl| D/Alt| F/Cmd|   G  |-------|           |-------|   H  | J/Cmd| K/Alt|L/Ctrl| ;/L4 |   '    |
+ * | Hyper  |   A  |S/Ctrl| D/Alt| F/Cmd|   G  |-------|           |-------|   H  | J/Cmd| K/Alt|L/Ctrl| ;/L4 |   '    |
  * |--------+------+------+------+------+------|   <   |           |   >   |------+------+------+------+------+--------|
- * |        |   Z  |   X  |   C  |   V  |   B  |       |           |       |   N  |   M  |   ,  |   .  |  /   |   \    |
+ * | Meh    |   Z  |   X  |   C  |   V  |   B  |       |           |       |   N  |   M  |   ,  |   .  |  /   |   \    |
  * `--------+------+------+------+------+--------------'           `--------------+------+------+------+------+--------'
  *   |Esc/L2| ~L3  |      |   \  |Shft-(|                                         |Shft-)|  _   |   [  | ]/L3 | ~L2  |
  *   `----------------------------------'                                         `----------------------------------'
@@ -51,9 +51,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [__BASE] = LAYOUT_ergodox(
     // left hand
     KC_GRV,            KC_1,         KC_2,         KC_3,            KC_4,              KC_5,         TG(__TEST),
-    KC_TAB,            KC_Q,         KC_W,         LT(__SYMB,KC_E), LT(__ARRO, KC_R),  KC_T,         KC_LBRC,
-    KC_LCTL,           KC_A,         LCTL_T(KC_S), LALT_T(KC_D),    LCMD_T(KC_F),      KC_G,
-    XXXXXXX,           KC_Z,         KC_X,         KC_C,            KC_V,              KC_B,         KC_LABK,
+    XXXXXXX,           KC_Q,         KC_W,         LT(__SYMB,KC_E), LT(__ARRO, KC_R),  KC_T,         KC_LBRC,
+    KC_HYPR,           KC_A,         LCTL_T(KC_S), LALT_T(KC_D),    LCMD_T(KC_F),      KC_G,
+    KC_MEH,            KC_Z,         KC_X,         KC_C,            KC_V,              KC_B,         KC_LABK,
     LT(__SYMB,KC_ESC), TT(__ARRO),   XXXXXXX,      KC_BSLS,         KC_LSPO,
                                                                           RGB_MOD,      RGB_RMOD,
                                                                                         KC_HOME,
@@ -119,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|       |           |       |------+------+------+------+------+--------|
  * | ______ |   @  |\/Ctrl| [/Alt| ]/Cmd|   `  |-------|           |-------|   -  | 4/Cmd| 5/Alt|6/Ctrl|  -   | Enter  |
  * |--------+------+------+------+------+------|       |           |       |------+------+------+------+------+--------|
- * | ______ |   %  |   ^  |   <  |   >  |   ~  |       |           |       |   &  |   1  |   2  |   3  |  +   | ______ |
+ * | ______ |   ^  |   %  |   <  |   >  |   ~  |       |           |       |   &  |   1  |   2  |   3  |  +   | ______ |
  * `--------+------+------+------+------+--------------'           `--------------+------+------+------+------+--------'
  *   | ____ |      |      |   (  |   )  |                                         |   0  |   .  |      |      | ____ |
  *   `----------------------------------'                                         `----------------------------------'
@@ -137,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,       XXXXXXX,      XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,      XXXXXXX,
     _______,      KC_EXLM,      KC_HASH,         KC_LCBR,         KC_RCBR,         KC_PIPE,      XXXXXXX,
     _______,      KC_AT,        LCTL_T(KC_BSLS), LALT_T(KC_LBRC), LCMD_T(KC_RBRC), KC_GRV,
-    _______,      KC_PERC,      KC_CIRC,         KC_LABK,         KC_RABK,         KC_TILD,      XXXXXXX,
+    _______,      KC_CIRC,      KC_PERC,         KC_LABK,         KC_RABK,         KC_TILD,      XXXXXXX,
     _______,      XXXXXXX,      XXXXXXX,         KC_LPRN,         KC_RPRN,
                                                                           RGB_MOD,      XXXXXXX,
                                                                                         RGB_VAI,
