@@ -117,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+--------------|           |-------+------+------+------+------+------+--------|
  * | ______ |   !  |   #  |   {  |   }  |   |  |       |           |       |   $  |   7  |   8  |   9  |  *   |        |
  * |--------+------+------+------+------+------|       |           |       |------+------+------+------+------+--------|
- * | ______ |   @  |\/Ctrl| [/Alt| ]/Cmd|   `  |-------|           |-------|   -  | 4/Cmd| 5/Alt|6/Ctrl|  -   | Enter  |
+ * | ______ |   @  |=/Ctrl| [/Alt| ]/Cmd|   `  |-------|           |-------|   -  | 4/Cmd| 5/Alt|6/Ctrl|  -   | Enter  |
  * |--------+------+------+------+------+------|       |           |       |------+------+------+------+------+--------|
  * | ______ |   ^  |   %  |   <  |   >  |   ~  |       |           |       |   &  |   1  |   2  |   3  |  +   | ______ |
  * `--------+------+------+------+------+--------------'           `--------------+------+------+------+------+--------'
@@ -136,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // left hand
     KC_ESC,       XXXXXXX,      XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,      XXXXXXX,
     _______,      KC_EXLM,      KC_HASH,         KC_LCBR,         KC_RCBR,         KC_PIPE,      XXXXXXX,
-    _______,      KC_AT,        LCTL_T(KC_BSLS), LALT_T(KC_LBRC), LCMD_T(KC_RBRC), KC_GRV,
+    _______,      KC_AT,        LCTL_T(KC_EQL),  LALT_T(KC_LBRC), LCMD_T(KC_RBRC), KC_GRV,
     _______,      KC_CIRC,      KC_PERC,         KC_LABK,         KC_RABK,         KC_TILD,      XXXXXXX,
     _______,      XXXXXXX,      XXXXXXX,         KC_LPRN,         KC_RPRN,
                                                                           RGB_MOD,      XXXXXXX,
