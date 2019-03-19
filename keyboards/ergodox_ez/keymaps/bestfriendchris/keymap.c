@@ -30,13 +30,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap L0: Basic Layer
  *
  * ,---------------------------------------------------.           ,---------------------------------------------------.
- * |   `    |   1  |   2  |   3  |   4  |   5  |  ~L1  |           |  ~L6  |   6  |   7  |   8  |   9  |   0  | BSpace |
+ * | Esc    |   1  |   2  |   3  |   4  |   5  |  ~L1  |           |  ~L6  |   6  |   7  |   8  |   9  |   0  | BSpace |
  * |--------+------+------+------+------+--------------|           |-------+------+------+------+------+------+--------|
- * | Esc    |   Q  |   W  | E/L2 | R/L3 |   T  |   [   |           |   ]   |   Y  |   U  | I/L2 |   O  |   P  |   =    |
+ * | Tab    |   Q  |   W  | E/L2 | R/L3 |   T  |   [   |           |   ]   |   Y  |   U  | I/L2 |   O  |   P  |   =    |
  * |--------+------+------+------+------+------|       |           |       |------+------+------+------+------+--------|
  * | Hyper  |   A  |S/Ctrl| D/Alt| F/Cmd|   G  |-------|           |-------|   H  | J/Cmd| K/Alt|L/Ctrl| ;/L4 |   '    |
  * |--------+------+------+------+------+------|   <   |           |   >   |------+------+------+------+------+--------|
- * | Tab    |   Z  |   X  |   C  |   V  |   B  |       |           |       |   N  |   M  |   ,  |   .  |  /   |   \    |
+ * | Meh    |   Z  |   X  |   C  |   V  |   B  |       |           |       |   N  |   M  |   ,  |   .  |  /   |   \    |
  * `--------+------+------+------+------+--------------'           `--------------+------+------+------+------+--------'
  *   |Esc/L2| ~L3  |      |   \  |Shft-(|                                         |Shft-)|  _   | ---- |  ~L3 | ~L2  |
  *   `----------------------------------'                                         `----------------------------------'
@@ -50,10 +50,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [__BASE] = LAYOUT_ergodox(
     // left hand
-    KC_GRV,            KC_1,         KC_2,         KC_3,            KC_4,              KC_5,         TG(__TEST),
-    KC_ESC,            KC_Q,         KC_W,         LT(__SYMB,KC_E), LT(__ARRO, KC_R),  KC_T,         KC_LBRC,
+    KC_ESC,            KC_1,         KC_2,         KC_3,            KC_4,              KC_5,         TG(__TEST),
+    KC_TAB,            KC_Q,         KC_W,         LT(__SYMB,KC_E), LT(__ARRO, KC_R),  KC_T,         KC_LBRC,
     KC_HYPR,           KC_A,         LCTL_T(KC_S), LALT_T(KC_D),    LCMD_T(KC_F),      KC_G,
-    KC_TAB,            KC_Z,         KC_X,         KC_C,            KC_V,              KC_B,         KC_LABK,
+    KC_MEH,            KC_Z,         KC_X,         KC_C,            KC_V,              KC_B,         KC_LABK,
     LT(__SYMB,KC_ESC), TT(__ARRO),   XXXXXXX,      KC_BSLS,         KC_LSPO,
                                                                           RGB_MOD,      RGB_RMOD,
                                                                                         KC_HOME,
@@ -121,7 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|       |           |       |------+------+------+------+------+--------|
  * | ______ |   ^  |   %  |   <  |   >  |   ~  |       |           |       |   &  |   1  |   2  |   3  |  +   | ______ |
  * `--------+------+------+------+------+--------------'           `--------------+------+------+------+------+--------'
- *   | ____ |      |      |   (  |   )  |                                         |   0  |   .  |      |      | ____ |
+ *   | ____ |      |      |   (  |   )  |                                         |   0  |   .  |      | ____ | ____ |
  *   `----------------------------------'                                         `----------------------------------'
  *                                        ,-------------.         ,-------------.
  *                                        |Animat|      |         |Toggle|Solid |
@@ -147,7 +147,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,      KC_DLR,       KC_7,         KC_8,         KC_9,         KC_PAST,            XXXXXXX,
                       KC_MINS,      RCMD_T(KC_4), RALT_T(KC_5), RCTL_T(KC_6), LT(__MDIA,KC_PMNS), KC_PENT,
         XXXXXXX,      KC_AMPR,      KC_1,         KC_2,         KC_3,         KC_PPLS,            _______,
-                                    KC_P0,        KC_DOT,       XXXXXXX,      XXXXXXX,            _______,
+                                    KC_P0,        KC_DOT,       XXXXXXX,      _______,            _______,
         RGB_TOG,      RGB_SLD,
         RGB_HUI,
         RGB_HUD,      _______,      _______
