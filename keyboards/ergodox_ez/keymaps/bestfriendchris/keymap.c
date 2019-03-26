@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|   <   |           |   >   |------+------+------+------+------+--------|
  * | Meh    |   Z  |   X  |   C  |   V  |   B  |       |           |       |   N  |   M  |   ,  |   .  |  /   |   \    |
  * `--------+------+------+------+------+--------------'           `--------------+------+------+------+------+--------'
- *   |Esc/L2| ~L3  |      |   \  |Shft-(|                                         |Shft-)|  _   | ---- |  ~L3 | ~L2  |
+ *   |Esc/L2| ~L3  |      |   \  |LShift|                                         |RShift|  _   | ---- |  ~L3 | ~L2  |
  *   `----------------------------------'                                         `----------------------------------'
  *                                        ,-------------.         ,-------------.
  *                                        | Mod+ | Mod- |         | Hue- | Hue+ |
@@ -54,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,            KC_Q,         KC_W,         LT(__SYMB,KC_E), LT(__ARRO, KC_R),  KC_T,         KC_LBRC,
     KC_HYPR,           KC_A,         LCTL_T(KC_S), LALT_T(KC_D),    LCMD_T(KC_F),      KC_G,
     KC_MEH,            KC_Z,         KC_X,         KC_C,            KC_V,              KC_B,         KC_LABK,
-    LT(__SYMB,KC_ESC), TT(__ARRO),   XXXXXXX,      KC_BSLS,         KC_LSPO,
+    LT(__SYMB,KC_ESC), TT(__ARRO),   XXXXXXX,      KC_BSLS,         KC_LSFT,
                                                                           RGB_MOD,      RGB_RMOD,
                                                                                         KC_HOME,
                                                             KC_SPC,       KC_BSPC,      KC_END,
@@ -63,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_RBRC,      KC_Y,         KC_U,         LT(__SYMB,KC_I), KC_O,         KC_P,                KC_EQL,
                       KC_H,         RCMD_T(KC_J), RALT_T(KC_K),    RCTL_T(KC_L), LT(__MDIA,KC_SCLN),  KC_QUOT,
         KC_RABK,      KC_N,         KC_M,         KC_COMM,         KC_DOT,       KC_SLSH,             KC_BSLS,
-                                    KC_RSPC,      KC_UNDS,         XXXXXXX,      TT(__ARRO),          TT(__SYMB),
+                                    KC_RSFT,      KC_UNDS,         XXXXXXX,      TT(__ARRO),          TT(__SYMB),
         RGB_HUD,      RGB_HUI,
         KC_PGUP,
         KC_PGDN,      KC_TAB,       KC_ENT
